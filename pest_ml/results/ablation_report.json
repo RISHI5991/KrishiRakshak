@@ -1,0 +1,14 @@
+{
+  "Baseline YOLO26n": {
+    "mAP50": 0.71,
+    "params": 3200000.0
+  },
+  "M3 Hybrid (MobileNetV4 + PicoDet)": {
+    "mAP50": 0.76,
+    "params": 4100000.0
+  },
+  "Student MCUNet (ESP32-S3 optimized)": {
+    "mAP50": 0.58,
+    "params": 450000.0
+  }
+}

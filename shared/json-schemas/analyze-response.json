@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Analyze Response",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "error"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "results": {
+      "type": "object",
+      "properties": {
+        "crop": {
+          "type": "object",
+          "properties": {
+            "class": {"type": "string"},
+            "confidence": {"type": "number"}
+          }
+        },
+        "disease": {
+          "type": "object",
+          "properties": {
+            "class": {"type": "string"},
+            "confidence": {"type": "number"}
+          }
+        },
+        "pests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "class": {"type": "string"},
+              "confidence": {"type": "number"},
+              "bbox": {
+                "type": "array",
+                "items": {"type": "number"},
+                "minItems": 4,
+                "maxItems": 4
+              }
+            }
+          }
+        },
+        "nutrient": {
+          "type": "object",
+          "properties": {
+            "status": {"type": "string"},
+            "confidence": {"type": "number"}
+          }
+        }
+      }
+    }
+  },
+  "required": ["status", "timestamp", "results"]
+}

@@ -1,0 +1,33 @@
+{
+  "soil_moisture": {
+    "dry": 3500,
+    "wet": 1500,
+    "unit": "ADC raw"
+  },
+  "temperature": {
+    "min": -10,
+    "max": 60,
+    "unit": "celsius"
+  },
+  "humidity": {
+    "min": 0,
+    "max": 100,
+    "unit": "percent"
+  },
+  "rain": {
+    "threshold": 500,
+    "unit": "ADC raw"
+  },
+  "ldr": {
+    "min": 0,
+    "max": 4095,
+    "unit": "ADC raw"
+  },
+  "vpd": {
+    "low": 0.4,
+    "optimal_low": 0.8,
+    "optimal_high": 1.2,
+    "high": 2.0,
+    "unit": "kPa"
+  }
+}

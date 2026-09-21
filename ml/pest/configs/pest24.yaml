@@ -1,0 +1,33 @@
+path: /Users/rishisharma/Dhurandhar/datasets/Pest24/VOCdevkit/voc2007
+
+train: /Users/rishisharma/Dhurandhar/pest_ml/manifests/pest24_train.txt
+val: /Users/rishisharma/Dhurandhar/pest_ml/manifests/pest24_val.txt
+test: /Users/rishisharma/Dhurandhar/pest_ml/manifests/pest24_test.txt
+
+nc: 24
+
+names:
+  0: Bollworm
+  1: Meadow borer
+  2: Gryllotalpa orientalis
+  3: Little Gecko
+  4: Agriotes fuscicollis Miwa
+  5: Nematode trench
+  6: Athetis lepigone
+  7: Scotogramma trifolii Rottemberg
+  8: Armyworm
+  9: Spodoptera cabbage
+  10: Anomala corpulenta
+  11: Spodoptera exigua
+  12: Plutella xylostella
+  13: holotrichia parallela
+  14: Rice planthopper
+  15: Yellow tiger
+  16: Land tiger
+  17: eight-character tiger
+  18: holotrichia oblita
+  19: Stem borer
+  20: Striped rice bore
+  21: Rice Leaf Roller
+  22: Spodoptera litura
+  23: Melahotus

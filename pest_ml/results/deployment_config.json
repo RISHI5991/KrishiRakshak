@@ -1,0 +1,9 @@
+{
+  "input_size": [
+    128,
+    128
+  ],
+  "model_format": "tflite_int8",
+  "target_hardware": "ESP32-S3",
+  "preprocessing": "normalize_0_1"
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dhurandhar API Response Schemas",
+  "description": "JSON schemas for all Dhurandhar Flask AI Gateway API responses",
+  "definitions": {
+    "successWrapper": {
+      "type": "object",
+      "required": ["status", "timestamp", "data"],
+      "properties": {
+        "status": { "type": "string", "enum": ["success"] },
+        "timestamp": { "type": "number" },
+        "data": { "type": "object" }
+      }
+    },
+    "errorWrapper": {
+      "type": "object",
+      "required": ["status", "timestamp", "error"],
+      "properties": {
+        "status": { "type": "string", "enum": ["error"] },
+        "timestamp": { "type": "number" },
+        "error": { "type": "string" }
+      }
+    },
+    "classificationResult": {
+      "type": "object",
+      "required": ["model", "class_id", "class_name", "confidence", "top3", "input_size", "processing_time_ms"],
+      "properties": {
+        "model": { "type": "string" },
+        "class_id": { "type": "integer" },
+        "class_name": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "top3": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "class_id": { "type": "integer" },
+              "class_name": { "type": "string" },
+              "confidence": { "type": "number" }
+            }
+          }
+        },
+        "input_size": { "type": "array", "items": { "type": "integer" } },
+        "processing_time_ms": { "type": "number" }
+      }
+    },
+    "pestDetectionResult": {
+      "type": "object",
+      "required": ["model", "count", "detections", "processing_time_ms"],
+      "properties": {
+        "model": { "type": "string" },
+        "checkpoint": { "type": "string" },
+        "count": { "type": "integer" },
+        "detections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "class_id": { "type": "integer" },
+              "class_name": { "type": "string" },
+              "confidence": { "type": "number" },
+              "bbox": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 }
+            }
+          }
+        },
+        "processing_time_ms": { "type": "number" }
+      }
+    },
+    "irrigationResult": {
+      "type": "object",
+      "required": ["decision", "features"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["IRRIGATE", "WAIT", "0", "1"] },
+        "features": { "type": "object" },
+        "probabilities": { "type": "object" },
+        "confidence": { "type": "number" },
+        "processing_time_ms": { "type": "number" }
+      }
+    }
+  }
+}

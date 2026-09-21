@@ -1,0 +1,16 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define WIFI_SSID "YOUR_SSID"
+#define WIFI_PASSWORD "YOUR_PASSWORD"
+
+#define SERVER_IP "192.168.1.100"
+#define SERVER_PORT 5003
+
+#define CAPTURE_INTERVAL 10000
+#define JPEG_QUALITY 12
+#define FRAME_SIZE FRAMESIZE_VGA
+
+#define LED_FLASH_PIN 4
+
+#endif

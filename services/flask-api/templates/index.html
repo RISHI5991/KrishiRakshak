@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dhurandhar AI Gateway</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#14213d;background:#f4f7fb}
+*{box-sizing:border-box}body{margin:0;padding:24px}.wrap{max-width:1100px;margin:auto}
+header,.panel,.result{background:#fff;border-radius:16px;box-shadow:0 8px 28px rgba(20,33,61,.08)}
+header{padding:24px 28px;margin-bottom:18px}.title{font-size:30px;font-weight:800}.sub{margin-top:6px;color:#61708a}
+.panel{padding:22px;margin-bottom:18px}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.field{flex:1;min-width:220px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#53617a}
+select,input[type=file],input[type=number]{width:100%;padding:11px;border:1px solid #d8dfeb;border-radius:10px;background:#fff}
+button{padding:12px 18px;border:0;border-radius:10px;background:#14213d;color:white;font-weight:700;cursor:pointer}button:disabled{opacity:.45;cursor:default}
+.drop{border:2px dashed #a8b4c8;border-radius:14px;padding:32px;text-align:center;margin:16px 0;cursor:pointer}.drop.drag{border-color:#14213d;background:#f1f5fb}
+.preview{max-width:360px;max-height:260px;border-radius:12px;display:none;margin:14px auto}.status{font-size:14px;margin:10px 0;color:#5d6b83}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.card{border:1px solid #e3e8f0;border-radius:12px;padding:16px}.card h3{margin:0 0 8px}.muted{color:#6b778c}.big{font-size:23px;font-weight:800;margin:5px 0}.pill{display:inline-block;background:#edf2f7;border-radius:999px;padding:5px 9px;font-size:12px;margin-top:5px}
+pre{white-space:pre-wrap;word-break:break-word;background:#0e1726;color:#e9eef7;border-radius:12px;padding:16px;overflow:auto}.ok{color:#147d4d}.bad{color:#b42318}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="title">🌱 Dhurandhar AI Gateway</div><div class="sub">Upload an image, select the model, and get the real inference result.</div></header>
+<section class="panel">
+<div class="row">
+<div class="field"><label>IMAGE MODEL</label><select id="mode"><option value="analyze">All image models</option><option value="plant">M1 — Plant/Crop</option><option value="disease">M2 — Disease</option><option value="pest">M3 — Pest detector</option></select></div>
+<div><button id="healthBtn">Check server</button></div>
+</div>
+<div id="drop" class="drop">Click here or drag an image into this box<input id="file" type="file" accept="image/*" hidden></div>
+<img id="preview" class="preview">
+<div class="row"><button id="go" disabled>Analyze image</button><span id="status" class="status">No image selected.</span></div>
+</section>
+<section class="panel"><h2 style="margin-top:0">Result</h2><div id="cards" class="grid"></div><pre id="raw">Waiting for analysis...</pre></section>
+<section class="panel"><h2 style="margin-top:0">Irrigation</h2><div class="row">
+<div class="field"><label>SOIL PREVIOUS</label><input id="sp" type="number" step="any" value="45"></div>
+<div class="field"><label>SOIL CURRENT</label><input id="sc" type="number" step="any" value="40"></div>
+<div class="field"><label>TEMPERATURE</label><input id="temp" type="number" step="any" value="30"></div>
+<div class="field"><label>HUMIDITY</label><input id="hum" type="number" step="any" value="55"></div>
+<div class="field"><label>RAIN RECENT</label><input id="rain" type="number" step="any" value="0"></div>
+<div class="field"><label>VPD</label><input id="vpd" type="number" step="any" value="1.5"></div>
+<div><button id="irrig">Predict irrigation</button></div></div><div id="irrigOut" class="status"></div></section>
+</div>
+<script>
+const $=id=>document.getElementById(id); const drop=$('drop'), file=$('file'), preview=$('preview'), go=$('go'), status=$('status'); let selected=null;
+drop.onclick=()=>file.click(); drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag')}; drop.ondragleave=()=>drop.classList.remove('drag'); drop.ondrop=e=>{e.preventDefault();drop.classList.remove('drag');file.files=e.dataTransfer.files;file.dispatchEvent(new Event('change'))};
+file.onchange=()=>{selected=file.files[0]; if(!selected){return} preview.src=URL.createObjectURL(selected);preview.style.display='block';go.disabled=false;status.textContent=`Selected: ${selected.name}`};
+$('healthBtn').onclick=async()=>{try{const r=await fetch('/api/health');const j=await r.json();$('raw').textContent=JSON.stringify(j,null,2)}catch(e){$('raw').textContent=String(e)}};
+function card(title,obj){if(!obj)return `<div class="card"><h3>${title}</h3><div class="bad">Unavailable</div></div>`; if(obj.detections!==undefined)return `<div class="card"><h3>${title}</h3><div class="big">${obj.count} detection(s)</div><div>${obj.detections.map(d=>`<div class="pill">${d.class_name} · ${(d.confidence*100).toFixed(1)}%</div>`).join(' ')}</div><div class="muted">${obj.processing_time_ms} ms</div></div>`; return `<div class="card"><h3>${title}</h3><div class="big">${obj.class_name}</div><div>${(obj.confidence*100).toFixed(2)}% confidence</div><div class="muted">${obj.processing_time_ms} ms</div></div>`}
+go.onclick=async()=>{if(!selected)return; go.disabled=true;status.textContent='Running inference...';const fd=new FormData();fd.append('image',selected);const mode=$('mode').value;const url=mode==='analyze'?'/api/analyze':`/api/predict/${mode}`;try{const r=await fetch(url,{method:'POST',body:fd});const j=await r.json();$('raw').textContent=JSON.stringify(j,null,2); if(j.status==='success'){const d=j.data; if(mode==='analyze'){$('cards').innerHTML=card('M1 — Plant/Crop',d.plant)+card('M2 — Disease',d.disease)+card('M3 — Pest',d.pests)}else{$('cards').innerHTML=card(mode.toUpperCase(),d)} status.textContent='Inference complete.'}else{status.textContent=j.error||'Inference failed.'}}catch(e){status.textContent=String(e)}finally{go.disabled=false}};
+$('irrig').onclick=async()=>{const payload={soil_moisture_previous:+$('sp').value,soil_moisture:+$('sc').value,soil_moisture_trend:+$('sc').value-+$('sp').value,temperature:+$('temp').value,humidity:+$('hum').value,rain_recent:+$('rain').value,vpd:+$('vpd').value};try{const r=await fetch('/api/irrigation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const j=await r.json();$('irrigOut').textContent=JSON.stringify(j,null,2)}catch(e){$('irrigOut').textContent=String(e)}};
+</script>
+</body></html>

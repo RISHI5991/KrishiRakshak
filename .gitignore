@@ -1,0 +1,88 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+*.venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python logs
+*.log
+
+# ML experiment/generated outputs
+runs/
+wandb/
+mlruns/
+outputs/
+
+# Large datasets
+datasets/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/
+dist/
+.next/
+
+# Android/Gradle
+.gradle/
+**/build/
+local.properties
+*.iml
+
+# Nested/local virtual environments anywhere in the tree
+**/.venv/
+**/venv/
+**/.agriguard-venv/
+
+# Large generated dataset-audit artifacts
+edge_ml/dataset_audit/near_duplicates.csv
+
+# Nutrient training archives
+nutrient_ml/data/HARN_Rice/archive/
+
+# Local nested repository artifacts
+**/.git/
+
+# Python compiled/native artifacts
+*.so
+*.dylib
+*.dll
+
+# Team-owned components being added separately
+apps/
+website/
+irrigation_ml/
+nutrient_ml/
+
+# Datasets / generated experiment data
+datasets/
+runs/
+
+# Legacy/reference code and environments
+reference/
+
+# Training-only base weights
+yolo26n.pt
+
+# Irrigation-owned root demo
+demo_irrigation.c

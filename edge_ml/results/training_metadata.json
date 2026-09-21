@@ -1,0 +1,8 @@
+{
+  "best_val_loss": 0.005775686435144788,
+  "epochs_completed": 20,
+  "model": "mobilenetv4_conv_small.e2400_r224_in1k",
+  "input_size": 256,
+  "m1_classes": 15,
+  "m2_classes": 38
+}

@@ -1,0 +1,40 @@
+# Paths intentionally point to the existing audited Pest24 manifests.
+project_root: /Users/rishisharma/Dhurandhar
+image_size: 640
+num_classes: 24
+strides: [4, 8, 16]
+neck_channels: [48, 96, 128]
+topk: 10
+center_radius: 2.5
+small_max: 32
+medium_max: 96
+box_weight: 7.5
+cls_weight: 1.0
+one2one_weight: 1.0
+focal_gamma: 2.0
+focal_alpha: 0.75
+classes:
+  0: Bollworm
+  1: Meadow borer
+  2: Gryllotalpa orientalis
+  3: Little Gecko
+  4: Agriotes fuscicollis Miwa
+  5: Nematode trench
+  6: Athetis lepigone
+  7: Scotogramma trifolii Rottemberg
+  8: Armyworm
+  9: Spodoptera cabbage
+  10: Anomala corpulenta
+  11: Spodoptera exigua
+  12: Plutella xylostella
+  13: holotrichia parallela
+  14: Rice planthopper
+  15: Yellow tiger
+  16: Land tiger
+  17: eight-character tiger
+  18: holotrichia oblita
+  19: Stem borer
+  20: Striped rice bore
+  21: Rice Leaf Roller
+  22: Spodoptera litura
+  23: Melahotus

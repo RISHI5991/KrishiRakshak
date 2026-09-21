@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Irrigation Request",
+  "type": "object",
+  "properties": {
+    "soil_moisture_previous": {
+      "type": "number",
+      "description": "Previous soil moisture reading (ADC raw)"
+    },
+    "soil_moisture": {
+      "type": "number",
+      "description": "Current soil moisture reading (ADC raw)"
+    },
+    "soil_moisture_trend": {
+      "type": "number",
+      "description": "Rate of change in soil moisture"
+    },
+    "temperature": {
+      "type": "number",
+      "description": "Ambient temperature in Celsius"
+    },
+    "humidity": {
+      "type": "number",
+      "description": "Relative humidity percentage"
+    },
+    "rain_recent": {
+      "type": "number",
+      "description": "Recent rain sensor reading (ADC raw)"
+    },
+    "vpd": {
+      "type": "number",
+      "description": "Vapor Pressure Deficit in kPa"
+    }
+  },
+  "required": [
+    "soil_moisture_previous",
+    "soil_moisture",
+    "soil_moisture_trend",
+    "temperature",
+    "humidity",
+    "rain_recent",
+    "vpd"
+  ]
+}

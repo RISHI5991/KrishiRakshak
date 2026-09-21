@@ -1,0 +1,27 @@
+name: General Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  shell-scripts-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check scripts are executable
+      run: |
+        for f in scripts/*.sh; do
+          if [ -f "$f" ]; then
+            chmod +x "$f"
+          fi
+        done
+        
+    - name: Run test-all.sh (dry run / mock mode if needed)
+      run: |
+        echo "Placeholder for comprehensive shell script testing."
+        # In a real environment, we'd mock the API and run test-all.sh

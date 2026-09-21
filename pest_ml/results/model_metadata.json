@@ -1,0 +1,5 @@
+{
+  "version": "PestDetector-Hybrid-v1",
+  "dataset": "Pest24_v1",
+  "architecture": "MobileNetV4 + PicoDet + YOLO26"
+}

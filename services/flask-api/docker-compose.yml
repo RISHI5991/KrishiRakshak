@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  dhurandhar-api:
+    build: .
+    container_name: dhurandhar-flask-api
+    ports:
+      - "5003:5003"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=5003
+      - DEBUG=false
+      - DHURANDHAR_ROOT=/app/../..
+    volumes:
+      # Mount the project root for model file access
+      - ../../:/project:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5003/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

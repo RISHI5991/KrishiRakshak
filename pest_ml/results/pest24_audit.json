@@ -1,0 +1,51 @@
+{
+  "root": "/Users/rishisharma/Dhurandhar/datasets/Pest24/VOCdevkit/voc2007",
+  "images": 25378,
+  "xml_annotations": 25378,
+  "yolo_labels": 25378,
+  "corrupt_images": 0,
+  "missing_xml": 0,
+  "missing_yolo": 0,
+  "empty_yolo": 0,
+  "invalid_yolo": 0,
+  "invalid_class_ids": 0,
+  "invalid_boxes": 0,
+  "xml_class_count": 24,
+  "xml_classes": [
+    "Agriotes fuscicollis Miwa",
+    "Anomala corpulenta",
+    "Armyworm",
+    "Athetis lepigone",
+    "Bollworm",
+    "Gryllotalpa orientalis",
+    "Land tiger",
+    "Little Gecko",
+    "Meadow borer",
+    "Melahotus",
+    "Nematode trench",
+    "Plutella xylostella",
+    "Rice Leaf Roller",
+    "Rice planthopper",
+    "Scotogramma trifolii Rottemberg",
+    "Spodoptera cabbage",
+    "Spodoptera exigua",
+    "Spodoptera litura",
+    "Stem borer",
+    "Striped rice bore",
+    "Yellow tiger",
+    "eight-character tiger",
+    "holotrichia oblita",
+    "holotrichia parallela"
+  ],
+  "yolo_object_count": 192424,
+  "xml_object_count": 192424,
+  "duplicate_groups": 1140,
+  "duplicate_images": 2280,
+  "dimensions": {
+    "800x600": 25378
+  },
+  "bbox_size_bins": {
+    "<1%": 189227,
+    "1-3%": 3197
+  }
+}
