@@ -1,0 +1,17 @@
+              precision    recall  f1-score   support
+
+     Healthy     1.0000    1.0000    1.0000        56
+K_Deficiency     0.8491    0.7759    0.8108        58
+N_Deficiency     0.9394    0.9394    0.9394        66
+P_Deficiency     0.7818    0.8600    0.8190        50
+
+    accuracy                         0.8957       230
+   macro avg     0.8926    0.8938    0.8923       230
+weighted avg     0.8971    0.8957    0.8956       230
+
+
+Confusion Matrix:
+[[56  0  0  0]
+ [ 0 45  1 12]
+ [ 0  4 62  0]
+ [ 0  4  3 43]]
