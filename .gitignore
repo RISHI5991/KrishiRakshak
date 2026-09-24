@@ -86,3 +86,11 @@ yolo26n.pt
 
 # Irrigation-owned root demo
 demo_irrigation.c
+
+# Irrigation ML generated/compiled files
+irrigation_ml/**/.DS_Store
+irrigation_ml/v2/firmware/float32_parity_batch
+irrigation_ml/v2/firmware/float_parity_batch
+irrigation_ml/v2/firmware/parity_batch
+irrigation_ml/v2/firmware/parity_test
+irrigation_ml/v2/firmware/test_m3

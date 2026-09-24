@@ -1,0 +1,61 @@
+{
+  "model_name": "Accuracy Focused",
+  "model_type": "RandomForest",
+  "configuration": {
+    "n_estimators": 12,
+    "max_depth": 6,
+    "min_samples_leaf": 1,
+    "min_samples_split": 3,
+    "max_features": "sqrt",
+    "name": "Accuracy Focused"
+  },
+  "n_features": 12,
+  "features": [
+    "soil_moisture",
+    "temperature",
+    "humidity",
+    "water_level",
+    "et_rate",
+    "soil_temp_stress",
+    "moisture_deficit",
+    "stress_index",
+    "vpd_index",
+    "temp_hum_ratio",
+    "critical_dry",
+    "optimal_moisture"
+  ],
+  "accuracy": 0.93025,
+  "balanced_accuracy": 0.9304185126780307,
+  "cv_mean": 0.9285,
+  "cv_std": 0.0071408814231857885,
+  "model_size_kb": 43.375,
+  "false_negative_rate": 0.06476683937823834,
+  "false_positive_rate": 0.07439613526570048,
+  "feature_importance": {
+    "soil_moisture": 0.09518927475960763,
+    "temperature": 0.0251598141143879,
+    "humidity": 0.004412658155515968,
+    "water_level": 0.1607052252875617,
+    "et_rate": 0.010877598989187706,
+    "soil_temp_stress": 0.2631000247990316,
+    "moisture_deficit": 0.0921850043887607,
+    "stress_index": 0.18732752111630602,
+    "vpd_index": 0.06888561775020531,
+    "temp_hum_ratio": 0.05221041937269415,
+    "critical_dry": 0.03520959686764642,
+    "optimal_moisture": 0.00473724439909462
+  },
+  "confusion_matrix": [
+    [
+      1916,
+      154
+    ],
+    [
+      125,
+      1805
+    ]
+  ],
+  "dataset_used": "irrigation_enhanced_dataset.csv",
+  "training_samples": 16000,
+  "test_samples": 4000
+}
