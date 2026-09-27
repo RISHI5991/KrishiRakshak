@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🤖 Dhurandhar
+# 🤖 KrishiRakshak
 
 **Edge-AI Agricultural Robotics System**
 
@@ -17,7 +17,7 @@
 
 ## Overview
 
-Dhurandhar is a hardware + software agricultural robotics solution that autonomously navigates fields, captures crop images, reads environmental sensors, and uses five edge-oriented ML models to identify crops, detect diseases and pests, assess nutrient deficiency, and make irrigation decisions — forming a **closed-loop** intelligent farming system.
+KrishiRakshak is a hardware + software agricultural robotics solution that autonomously navigates fields, captures crop images, reads environmental sensors, and uses five edge-oriented ML models to identify crops, detect diseases and pests, assess nutrient deficiency, and make irrigation decisions — forming a **closed-loop** intelligent farming system.
 
 ```
 Move → Sense → Capture → Analyze → Understand → Decide → Act → Measure again → Repeat
