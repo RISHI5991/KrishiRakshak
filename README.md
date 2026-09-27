@@ -27,7 +27,7 @@ Move → Sense → Capture → Analyze → Understand → Decide → Act → Mea
 
 ```mermaid
 flowchart TB
-    subgraph ROBOT["🤖 Dhurandhar Robot"]
+    subgraph ROBOT["🤖 KrishiRakshak Robot"]
         CAM["ESP32-CAM<br/>OV2640 Camera"]
         S3["ESP32-S3 N16R8<br/>Central Coordinator"]
         WROOM["ESP32-WROOM<br/>Motor & Pump Control"]
